@@ -19,19 +19,19 @@ public class Product {
     @Column(name = "NAME")
     String name;
 
-    @Column(name = "quantityStock")
+    @Column(name = "QUANTITY_STOCK")
     int quantityStock;
 
-    @Column(name = "NAME")
+    @Column(name = "QUANTITY_SOLD")
     int quantitySold;
 
-    @Column(name = "NAME")
+    @Column(name = "QUANTITY_DELIVERING")
     int quantityDelivering;
 
-    @Column(name = "NAME")
+    @Column(name = "DESCRIPTION")
     String description;
 
-    @Column(name = "NAME")
+    @Column(name = "IMAGE_URL")
     String imageUrl;
 
 }
