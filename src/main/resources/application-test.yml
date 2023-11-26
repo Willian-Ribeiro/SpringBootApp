@@ -1,0 +1,24 @@
+server:
+  port: 8080
+  host: localhost
+  servlet:
+    context-path: /lunar_ecommerce/clothing
+
+h2:
+  scope: runtime
+
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;INIT=CREATE SCHEMA IF NOT EXISTS delivery;
+    username: testUser
+    password:
+    driverClassName: org.h2.Driver
+  jpa:
+    spring.jpa.database-platform: org.hibernate.dialect.H2Dialect
+    hibernate.ddl-auto: none # hibernate creates schema: create-drop, sql file: none
+    defer-datasource-initialization: true # make hibernate execute before data., populating after hibernate generate schema
+  h2:
+    console.enabled: true # http://localhost:8080/lunar_ecommerce/clothing/h2-console/
+  sql:
+    init:
+      mode: always

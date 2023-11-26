@@ -1,0 +1,6 @@
+server:
+  port: 8080
+  host: localhost
+  servlet:
+    context-path: /lunar_ecommerce/clothing
+

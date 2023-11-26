@@ -1,10 +1,13 @@
 package com.industries.lunar.rest.model;
 
+import com.industries.lunar.rest.enums.DeliveryStatusEnum;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.Set;
+
 @Entity
-@Table(name = "TB_PRODUCT")
+@Table(name = "TB_PRODUCT", schema = "public")
 @Builder
 @Setter
 @Getter
@@ -13,25 +16,30 @@ import lombok.*;
 public class Product {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    long id;
+    @GeneratedValue(strategy= GenerationType.AUTO, generator = "seq_tb_product_id") // use IDENTITY only when you want Hibernate to generate sequence
+    private long id;
 
     @Column(name = "NAME")
-    String name;
+    private String name;
 
     @Column(name = "QUANTITY_STOCK")
-    int quantityStock;
-
-    @Column(name = "QUANTITY_SOLD")
-    int quantitySold;
-
-    @Column(name = "QUANTITY_DELIVERING")
-    int quantityDelivering;
+    private int quantityStock;
 
     @Column(name = "DESCRIPTION")
-    String description;
+    private String description;
 
-    @Column(name = "IMAGE_URL")
-    String imageUrl;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "DELIVERY_STATUS", columnDefinition = "ENUM('DISPATCHED', 'DELIVERED')")
+    private DeliveryStatusEnum deliveryStatus;
 
+    @ManyToOne
+    @JoinColumn(name = "PACKAGE_ID")
+    private Package aPackage;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "TB_PRODUCTS_LABELS",
+            joinColumns = @JoinColumn(name = "PRODUCT_ID"),
+            inverseJoinColumns = @JoinColumn(name = "LABEL_ID"))
+    private Set<Label> labels;
 }

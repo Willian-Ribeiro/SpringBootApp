@@ -1,7 +1,7 @@
 package com.industries.lunar.rest.model.dto;
 
+import com.industries.lunar.rest.enums.DeliveryStatusEnum;
 import com.industries.lunar.rest.model.Product;
-import jakarta.persistence.Column;
 import lombok.*;
 
 @Builder
@@ -11,22 +11,18 @@ import lombok.*;
 @AllArgsConstructor
 public class ProductRequestDTO {
 
-    String name;
-    int quantityStock;
-    int quantitySold;
-    int quantityDelivering;
-    String description;
-    String imageUrl;
+    private String name;
+    private int quantityStock;
+    private String description;
+    private DeliveryStatusEnum deliveryStatus;
 
-    Product toProduct()
+    public Product toProduct()
     {
         return Product.builder()
                 .name(this.name)
                 .quantityStock(this.quantityStock)
-                .quantitySold(this.quantitySold)
-                .quantityDelivering(this.quantityDelivering)
                 .description(this.description)
-                .imageUrl(this.imageUrl)
+                .deliveryStatus(this.deliveryStatus)
                 .build();
     }
 }
