@@ -16,6 +16,7 @@ import java.util.Set;
 public class Product {
 
     @Id
+    @SequenceGenerator(name="seq_tb_product_id", sequenceName="seq_tb_product_id", allocationSize=1)
     @GeneratedValue(strategy= GenerationType.AUTO, generator = "seq_tb_product_id") // use IDENTITY only when you want Hibernate to generate sequence
     private long id;
 

@@ -15,8 +15,8 @@ Feature: Products controller tests
 
         Examples:
             | status |   deliveryStatus  | size |
-            |  200   |         null      |  2   |
-            |  200   |     DISPATCHED    |  1   |
+            |  200   |         null      |  3   |
+            |  200   |     DISPATCHED    |  2   |
             |  200   |     DELIVERED     |  1   |
 
     Scenario Outline: Products make GET call with ID

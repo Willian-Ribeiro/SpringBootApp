@@ -15,6 +15,7 @@ import java.util.List;
 public class Package {
 
     @Id
+    @SequenceGenerator(name="seq_tb_package_id", sequenceName="seq_tb_package_id", allocationSize=1)
     @GeneratedValue(strategy= GenerationType.AUTO, generator = "seq_tb_package_id")
     private long id;
 

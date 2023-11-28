@@ -15,6 +15,7 @@ import java.util.Set;
 public class Label {
 
     @Id
+    @SequenceGenerator(name="seq_tb_label_id", sequenceName="seq_tb_label_id", allocationSize=1)
     @GeneratedValue(strategy= GenerationType.AUTO, generator = "seq_tb_label_id")
     private long id;
 
